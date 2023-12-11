@@ -1,7 +1,18 @@
 #!/bin/bash
+shopt -s expand_aliases
+
+
+# apt package manager
+alias aptup='sudo apt update && sudo apt upgrade'
+alias aptupd='sudo apt update'
+alias aptupg='sudo apt upgrade'
+alias aptin='sudo apt install'
+alias aptrm='sudo apt remove'
+alias apts='apt search'
+
 
 sudo apt install gedit
-aptin curl
+aptin curl -y
 aptin gcc -y
 aptin g++ -y
 aptin neovim -y
@@ -71,7 +82,7 @@ cd gnome-terminal
 wget https://raw.githubusercontent.com/dracula/gedit/master/dracula.xml
 mkdir /home/tamim/.local/share/gedit/styles/
 mv dracula.xml $HOME/.local/share/gedit/styles/
-# Activate in Gedit's preferences dialog
+# #now Activate the theme in Gedit's preferences dialog
 
 
 
