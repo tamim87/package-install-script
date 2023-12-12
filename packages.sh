@@ -85,6 +85,9 @@ mv dracula.xml $HOME/.local/share/gedit/styles/
 # #now Activate the theme in Gedit's preferences dialog
 
 
+# freedownload manager
+wget https://files2.freedownloadmanager.org/6/latest/freedownloadmanager.deb
+aptin ./freedownloadmanager
 
 
 
