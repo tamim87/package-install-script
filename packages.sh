@@ -32,6 +32,7 @@ aptin gnome-tweaks -y
 aptin geany -y
 aptin geany-plugins -y
 aptin solaar -y
+aptin distrobox -y
 
 
 
