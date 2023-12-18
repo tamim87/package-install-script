@@ -17,6 +17,7 @@ aptin gcc -y
 aptin g++ -y
 aptin neovim -y
 aptin git -y
+aptin git-lfs -y
 aptin neofetch -y
 aptin libfuse2 -y
 aptin exa -y
@@ -41,13 +42,16 @@ curl -sS https://starship.rs/install.sh | sh
 sudo snap install spotify 
 sudo snap install bitwarden 
 
+
 # jetbrains mono font
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)"
+
 
 # sublime-text
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sublimehq-archive.gpg > /dev/null
 echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
 sudo apt update && sudo apt install sublime-text
+
 
 # cloudflare warp
 curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
@@ -91,5 +95,8 @@ wget https://files2.freedownloadmanager.org/6/latest/freedownloadmanager.deb
 aptin ./freedownloadmanager
 
 
-
+# Discord
+wget -O ~/discord-installer.deb "https://discord.com/api/download?platform=linux&format=deb"
+aptin ./discord-installer.deb -y
+rm discord-installer.deb
 
