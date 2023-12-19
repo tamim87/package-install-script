@@ -100,3 +100,8 @@ wget -O ~/discord-installer.deb "https://discord.com/api/download?platform=linux
 aptin ./discord-installer.deb -y
 rm discord-installer.deb
 
+
+# Visual Studio Code
+wget -O ~/vscode-installer.deb "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
+aptin ./vscode-installer.deb -y
+rm vscode-installer.deb
