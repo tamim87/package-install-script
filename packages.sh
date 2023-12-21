@@ -32,6 +32,7 @@ aptin geany -y
 aptin geany-plugins -y
 aptin solaar -y
 aptin distrobox -y
+aptin ubuntu-restricted-extras -y
 
 
 
