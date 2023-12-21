@@ -11,7 +11,7 @@ alias aptrm='sudo apt remove'
 alias apts='apt search'
 
 
-sudo apt install gedit
+aptin gedit
 aptin curl -y
 aptin gcc -y
 aptin g++ -y
@@ -23,11 +23,9 @@ aptin libfuse2 -y
 aptin exa -y
 aptin vlc -y
 aptin mpv -y
-aptin guake -y
 aptin gnome-shell-extensions -y
 aptin gnome-shell-extension-manager -y
 aptin qpdfview -y
-aptin zathura -y
 aptin libreoffice -y
 aptin gnome-tweaks -y
 aptin geany -y
@@ -92,7 +90,8 @@ mv dracula.xml $HOME/.local/share/gedit/styles/
 
 # freedownload manager
 wget https://files2.freedownloadmanager.org/6/latest/freedownloadmanager.deb
-aptin ./freedownloadmanager
+aptin ./freedownloadmanager.deb -y
+rm freedownloadmanager.deb
 
 
 # Discord
