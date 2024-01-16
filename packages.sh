@@ -34,6 +34,7 @@ aptin solaar -y
 aptin distrobox -y
 aptin ubuntu-restricted-extras -y
 aptin obs-studio -y
+aptin foliate -y
 
 
 
