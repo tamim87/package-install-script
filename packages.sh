@@ -22,6 +22,7 @@ aptin neofetch -y
 aptin libfuse2 -y
 aptin exa -y
 aptin vlc -y
+aptin haruna -y
 aptin mpv -y
 aptin gnome-shell-extensions -y
 aptin gnome-shell-extension-manager -y
