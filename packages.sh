@@ -15,34 +15,31 @@ aptin gedit
 aptin curl -y
 aptin gcc -y
 aptin g++ -y
-aptin neovim -y
 aptin git -y
 aptin git-lfs -y
-aptin neofetch -y
+aptin neovim -y
 aptin libfuse2 -y
-aptin exa -y
+aptin neofetch -y
+aptin ncdu -y
 aptin vlc -y
 aptin haruna -y
+aptin exa -y
 aptin gnome-shell-extensions -y
 aptin gnome-shell-extension-manager -y
+aptin ubuntu-restricted-extras -y
 aptin qpdfview -y
 aptin libreoffice -y
 aptin gnome-tweaks -y
 aptin geany -y
 aptin geany-plugins -y
-aptin solaar -y
-aptin distrobox -y
-aptin ubuntu-restricted-extras -y
 aptin obs-studio -y
 aptin foliate -y
+aptin distrobox -y
+aptin solaar -y
 
 
 
 
-# starship
-curl -sS https://starship.rs/install.sh | sh
-sudo snap install spotify 
-sudo snap install bitwarden 
 
 
 # jetbrains mono font
@@ -78,6 +75,13 @@ echo 'deb [signed-by=/usr/share/keyrings/onlyoffice.gpg] https://download.onlyof
 aptup && aptin onlyoffice-desktopeditors
 
 
+
+# starship prompt for shell
+curl -sS https://starship.rs/install.sh | sh
+sudo snap install spotify 
+sudo snap install bitwarden 
+
+
 # dracula theme for gnome-terminal
 sudo apt install dconf-cli
 git clone https://github.com/dracula/gnome-terminal
@@ -92,16 +96,16 @@ mv dracula.xml $HOME/.local/share/gedit/styles/
 # #now Activate the theme in Gedit's preferences dialog
 
 
-# freedownload manager
-wget https://files2.freedownloadmanager.org/6/latest/freedownloadmanager.deb
-aptin ./freedownloadmanager.deb -y
-rm freedownloadmanager.deb
-
-
 # Discord
 wget -O ~/discord-installer.deb "https://discord.com/api/download?platform=linux&format=deb"
 aptin ./discord-installer.deb -y
 rm discord-installer.deb
+
+
+# freedownload manager
+wget https://files2.freedownloadmanager.org/6/latest/freedownloadmanager.deb
+aptin ./freedownloadmanager.deb -y
+rm freedownloadmanager.deb
 
 
 # Visual Studio Code
