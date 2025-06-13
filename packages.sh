@@ -17,6 +17,15 @@ aptin curl -y
 # Modern replacement for ls
 aptin exa -y
 
+# Application deployment framework for desktop apps
+aptin flatpak
+
+# Flatpak support for GNOME Software, makes it possible to install apps without needing the command line
+aptin gnome-software-plugin-flatpak
+
+# Add the Flathub repository
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
 # simple and modern ebook viewer
 aptin foliate -y
 
@@ -120,7 +129,7 @@ rm vscode-installer.deb
 
 # cloudflare warp
 curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ jammy main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
 aptup && aptin cloudflare-warp -y
 
 warp-cli register
