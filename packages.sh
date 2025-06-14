@@ -98,11 +98,47 @@ aptin kdiskmark -y
 # Logitech Unifying Receiver peripherals manager for Linux
 # aptin solaar -y
 
-# bitwarden
-sudo snap install bitwarden 
+
+## Snap Applications
+
+# Unofficial version of Microsoft To-Do
+sudo snap install microsoft-todo-unofficial
 
 
+## flatpak Applications
 
+# Blanket - Listen to ambient sounds
+flatpak install flathub com.rafaelmardojai.Blanket -y
+
+# BoxBuddy - A Graphical Distrobox Manager
+flatpak install flathub io.github.dvlv.boxbuddyrs -y
+
+# DbGate - (no)SQL database client
+flatpak install flathub org.dbgate.DbGate -y
+
+# Discord
+flatpak install flathub com.discordapp.Discord -y
+
+# Firefox - Fast, Private & Safe Web Browser
+flatpak install flathub org.mozilla.firefox -y
+
+# Google Chrome Web Browser
+flatpak install flathub com.google.Chrome -y
+
+# Portal for Teams - Unofficial Microsoft Teams client for Linux
+flatpak install flathub com.github.IsmaelMartinez.teams_for_linux -y
+
+# Postman - Platform for building and using APIs
+flatpak install flathub com.getpostman.Postman -y
+
+# Telegram Desktop
+flatpak install flathub org.telegram.desktop -y
+
+# Obsidian - Markdown-based knowledge base
+flatpak install flathub md.obsidian.Obsidian -y
+
+# Joplin - open source note taking and to-do application
+flatpak install flathub net.cozic.joplin_desktop -y
 
 
 # jetbrains mono font
@@ -137,7 +173,6 @@ warp-cli connect
 warp-cli set-mode warp+doh
 
 
-
 # onlyoffice
 mkdir -p -m 700 ~/.gnupg
 gpg --no-default-keyring --keyring gnupg-ring:/tmp/onlyoffice.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys CB2DE8E5
@@ -149,10 +184,8 @@ echo 'deb [signed-by=/usr/share/keyrings/onlyoffice.gpg] https://download.onlyof
 aptup && aptin onlyoffice-desktopeditors
 
 
-
 # starship prompt for shell
 curl -sS https://starship.rs/install.sh | sh
-
 
 
 # dracula theme for gnome-terminal
@@ -166,11 +199,4 @@ cd gnome-terminal
 wget https://raw.githubusercontent.com/dracula/gedit/master/dracula.xml
 mkdir /home/tamim/.local/share/gedit/styles/
 mv dracula.xml $HOME/.local/share/gedit/styles/
-# #now Activate the theme in Gedit's preferences dialog
-
-
-# Discord
-wget -O ~/discord-installer.deb "https://discord.com/api/download?platform=linux&format=deb"
-aptin ./discord-installer.deb -y
-rm discord-installer.deb
-
+# # now Activate the theme in Gedit's preferences dialog
