@@ -70,28 +70,100 @@ install_snap_package() {
     fi
 }
 
+# ========================
+# Flatpak Helper Functions
+# ========================
+
+# Adding the Flathub repository
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+is_flatpak_installed() {
+    flatpak list --app | grep -q "$1"
+}
+
+install_flatpak_app() {
+    local app_id=$1
+    if is_flatpak_installed "$app_id"; then
+        echo "$app_id (Flatpak) is already installed."
+    else
+        echo "Installing $app_id (Flatpak)..."
+        flatpak install -y flathub "$app_id" || echo "⚠️ Failed to install Flatpak app $app_id" >> "$LOG_FILE"
+    fi
+}
+
+
 # =====================
 # Install Core Packages
 # =====================
 
 APT_PACKAGES=(
-    "curl" "exa" "foliate" "g++" "gcc" "geany" "geany-plugins" "gedit" 
-    "git" "git-lfs" "gnome-shell-extensions" "gnome-shell-extension-manager"
-    "gnome-tweaks" "haruna" "libfuse2" "libreoffice" "ncdu" "neofetch"
-    "neovim" "obs-studio" "qpdfview" "ubuntu-restricted-extras" "vlc"
+    "curl" 
+    "exa" 
+    "flatpak" 
+    "foliate" 
+    "g++" 
+    "gcc" 
+    "geany" 
+    "geany-plugins" 
+    "gedit"
+    "git" 
+    "git-lfs" 
+    "gnome-shell-extensions" 
+    "gnome-shell-extension-manager"
+    "gnome-software-plugin-flatpak" 
+    "gnome-tweaks" 
+    "haruna" 
     "kdiskmark" 
+    "libfuse2"
+    "libreoffice" 
+    "ncdu" 
+    "neofetch" 
+    "neovim" 
+    "obs-studio" 
+    "qpdfview"
+    "ubuntu-restricted-extras" 
+    "vlc" 
 )
 
 for package in "${APT_PACKAGES[@]}"; do
     install_apt_package "$package"
 done
 
-# Snap Packages
-SNAP_PACKAGES=("bitwarden")
+
+# ========================
+# Install Snap Packages
+# ========================
+
+SNAP_PACKAGES=("bitwarden" "microsoft-todo-unofficial")
 
 for package in "${SNAP_PACKAGES[@]}"; do
     install_snap_package "$package"
 done
+
+
+# ========================
+# Install Flatpak Packages
+# ========================
+
+FLATPAK_APPS=(
+    "com.discordapp.Discord"
+    "com.getpostman.Postman"
+    "com.github.IsmaelMartinez.teams_for_linux"
+    "com.google.Chrome"
+    "com.rafaelmardojai.Blanket"
+    "io.github.dvlv.boxbuddyrs"
+    "md.obsidian.Obsidian"
+    "net.cozic.joplin_desktop"
+    "org.dbgate.DbGate"
+    "org.mozilla.firefox"
+    "org.onlyoffice.desktopeditors"
+    "org.telegram.desktop"
+)
+
+for app in "${FLATPAK_APPS[@]}"; do
+    install_flatpak_app "$app"
+done
+
 
 # =========================
 # Install Custom Applications
@@ -122,7 +194,7 @@ done
 # Cloudflare Warp
 if ! is_installed "cloudflare-warp"; then
     curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
-    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ jammy main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
+    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
     aptup
     install_apt_package "cloudflare-warp"
     warp-cli register
@@ -130,17 +202,17 @@ if ! is_installed "cloudflare-warp"; then
     warp-cli set-mode warp+doh
 fi
 
-# OnlyOffice
-if ! is_installed "onlyoffice-desktopeditors"; then
-    mkdir -p -m 700 ~/.gnupg
-    gpg --no-default-keyring --keyring gnupg-ring:/tmp/onlyoffice.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys CB2DE8E5
-    chmod 644 /tmp/onlyoffice.gpg
-    sudo chown root:root /tmp/onlyoffice.gpg
-    sudo mv /tmp/onlyoffice.gpg /usr/share/keyrings/onlyoffice.gpg
-    echo 'deb [signed-by=/usr/share/keyrings/onlyoffice.gpg] https://download.onlyoffice.com/repo/debian squeeze main' | sudo tee -a /etc/apt/sources.list.d/onlyoffice.list
-    aptup
-    install_apt_package "onlyoffice-desktopeditors"
-fi
+# # OnlyOffice
+# if ! is_installed "onlyoffice-desktopeditors"; then
+#     mkdir -p -m 700 ~/.gnupg
+#     gpg --no-default-keyring --keyring gnupg-ring:/tmp/onlyoffice.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys CB2DE8E5
+#     chmod 644 /tmp/onlyoffice.gpg
+#     sudo chown root:root /tmp/onlyoffice.gpg
+#     sudo mv /tmp/onlyoffice.gpg /usr/share/keyrings/onlyoffice.gpg
+#     echo 'deb [signed-by=/usr/share/keyrings/onlyoffice.gpg] https://download.onlyoffice.com/repo/debian squeeze main' | sudo tee -a /etc/apt/sources.list.d/onlyoffice.list
+#     aptup
+#     install_apt_package "onlyoffice-desktopeditors"
+# fi
 
 # Starship Prompt for Shell
 curl -sS https://starship.rs/install.sh | sh

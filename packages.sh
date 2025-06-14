@@ -101,11 +101,26 @@ aptin kdiskmark -y
 
 ## Snap Applications
 
+# Bitwarden Password Manager
+sudo snap install bitwarden
+
 # Unofficial version of Microsoft To-Do
 sudo snap install microsoft-todo-unofficial
 
 
 ## flatpak Applications
+
+# Discord
+flatpak install flathub com.discordapp.Discord -y
+
+# Postman - Platform for building and using APIs
+flatpak install flathub com.getpostman.Postman -y
+
+# Portal for Teams - Unofficial Microsoft Teams client for Linux
+flatpak install flathub com.github.IsmaelMartinez.teams_for_linux -y
+
+# Google Chrome Web Browser
+flatpak install flathub com.google.Chrome -y
 
 # Blanket - Listen to ambient sounds
 flatpak install flathub com.rafaelmardojai.Blanket -y
@@ -113,32 +128,23 @@ flatpak install flathub com.rafaelmardojai.Blanket -y
 # BoxBuddy - A Graphical Distrobox Manager
 flatpak install flathub io.github.dvlv.boxbuddyrs -y
 
-# DbGate - (no)SQL database client
-flatpak install flathub org.dbgate.DbGate -y
-
-# Discord
-flatpak install flathub com.discordapp.Discord -y
-
-# Firefox - Fast, Private & Safe Web Browser
-flatpak install flathub org.mozilla.firefox -y
-
-# Google Chrome Web Browser
-flatpak install flathub com.google.Chrome -y
-
-# Portal for Teams - Unofficial Microsoft Teams client for Linux
-flatpak install flathub com.github.IsmaelMartinez.teams_for_linux -y
-
-# Postman - Platform for building and using APIs
-flatpak install flathub com.getpostman.Postman -y
-
-# Telegram Desktop
-flatpak install flathub org.telegram.desktop -y
-
 # Obsidian - Markdown-based knowledge base
 flatpak install flathub md.obsidian.Obsidian -y
 
 # Joplin - open source note taking and to-do application
 flatpak install flathub net.cozic.joplin_desktop -y
+
+# DbGate - (no)SQL database client
+flatpak install flathub org.dbgate.DbGate -y
+
+# Firefox - Fast, Private & Safe Web Browser
+flatpak install flathub org.mozilla.firefox -y
+
+# ONLYOFFICE Desktop Editors - Office productivity suite
+flatpak install flathub org.onlyoffice.desktopeditors -y
+
+# Telegram Desktop
+flatpak install flathub org.telegram.desktop -y
 
 
 # jetbrains mono font
@@ -173,15 +179,15 @@ warp-cli connect
 warp-cli set-mode warp+doh
 
 
-# onlyoffice
-mkdir -p -m 700 ~/.gnupg
-gpg --no-default-keyring --keyring gnupg-ring:/tmp/onlyoffice.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys CB2DE8E5
-chmod 644 /tmp/onlyoffice.gpg
-sudo chown root:root /tmp/onlyoffice.gpg
-sudo mv /tmp/onlyoffice.gpg /usr/share/keyrings/onlyoffice.gpg
+# # onlyoffice
+# mkdir -p -m 700 ~/.gnupg
+# gpg --no-default-keyring --keyring gnupg-ring:/tmp/onlyoffice.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys CB2DE8E5
+# chmod 644 /tmp/onlyoffice.gpg
+# sudo chown root:root /tmp/onlyoffice.gpg
+# sudo mv /tmp/onlyoffice.gpg /usr/share/keyrings/onlyoffice.gpg
 
-echo 'deb [signed-by=/usr/share/keyrings/onlyoffice.gpg] https://download.onlyoffice.com/repo/debian squeeze main' | sudo tee -a /etc/apt/sources.list.d/onlyoffice.list
-aptup && aptin onlyoffice-desktopeditors
+# echo 'deb [signed-by=/usr/share/keyrings/onlyoffice.gpg] https://download.onlyoffice.com/repo/debian squeeze main' | sudo tee -a /etc/apt/sources.list.d/onlyoffice.list
+# aptup && aptin onlyoffice-desktopeditors
 
 
 # starship prompt for shell
